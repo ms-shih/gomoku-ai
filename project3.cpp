@@ -535,11 +535,12 @@ int evaluation(int who){
 
 void write_valid_spot(std::ofstream& fout) {
     int x = 7, y = 7, max_eva = -std::numeric_limits<int>::infinity(), myv, opv, tov;
-    int who = player;
+    int who;
     for(int i = 0; i < SIZE; i++){
         for(int j = 0; j < SIZE; j++){
             if(board[i][j] == EMPTY){
                 board[i][j] = player;
+                who = player;
                 myv = evaluation(who);
                 if(player == BLACK) who = WHITE;
                 else who = BLACK;
