@@ -36,6 +36,7 @@ void write_valid_spot(std::ofstream& fout) {
             fout << x << " " << y << std::endl;
             // Remember to flush the output to ensure the last action is written to file.
             fout.flush();
+            break;
         }
     }
 }
