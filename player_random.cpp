@@ -16,7 +16,6 @@ std::array<std::array<int, SIZE>, SIZE> board;
 
 void read_board(std::ifstream& fin) {
     fin >> player;
-    std::cout << "mytest: " << player << "\n";
     for (int i = 0; i < SIZE; i++) {
         for (int j = 0; j < SIZE; j++) {
             fin >> board[i][j];

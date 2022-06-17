@@ -16,8 +16,8 @@ class node{
     public:
     char x;
     char y;
-    char v;  //0 empty, 1 own, 2 other
-    node(char a, char b, char c){
+    int v;  //0 empty, 1 own, 2 other
+    node(char a, char b, int c){
         x = a;
         y = b;
         v = c;
@@ -27,6 +27,12 @@ class node{
         y = 0;
         v = 0;
     }
+    // node& operator= (const node &other){
+    //     x = other.x;
+    //     y = other.y;
+    //     v = other.v;
+    //     return *this;
+    // }
 };
 
 int player;
@@ -514,14 +520,18 @@ int evaluation_point(int x, int y, int who){
                     }
                 }
             }
-            if(flag2) value = all_value[i]; 
-            break;
+            if(flag2) {
+                value = all_value[i]; 
+                return value;
+            }
         }
     }
     return value;
 }
 
 int evaluation(int who){
+    record.clear();
+    record.resize(SIZE, std::vector<int>(SIZE, 0));
     int total_value = 0;
     for(int i = 0; i < SIZE; i++){
         for(int j = 0; j < SIZE; j++){
@@ -533,30 +543,86 @@ int evaluation(int who){
     return total_value;
 }
 
-void write_valid_spot(std::ofstream& fout) {
-    int x = 7, y = 7, max_eva = -std::numeric_limits<int>::infinity(), myv, opv, tov;
-    int who;
-    for(int i = 0; i < SIZE; i++){
-        for(int j = 0; j < SIZE; j++){
-            if(board[i][j] == EMPTY){
-                board[i][j] = player;
-                who = player;
-                myv = evaluation(who);
-                if(player == BLACK) who = WHITE;
-                else who = BLACK;
-                opv = evaluation(who);
-                tov = myv-opv;
-                if(tov > max_eva){
-                    max_eva = tov;
-                    x = i;
-                    y = j;
-                }
-                board[i][j] = EMPTY;
-            }
-            record.clear();
-            record.resize(SIZE, std::vector<int>(SIZE, 0));
+bool check_empty(int i, int j){
+    if(i-1 >= 0){
+        if(board[i-1][j]) return true;
+        if(j-1 >= 0){
+            if(board[i-1][j-1]) return true;
+        }
+        if(j+1 < SIZE){
+            if(board[i-1][j+1]) return true;
         }
     }
+    if(j-1 >= 0){
+        if(board[i][j-1]) return true;
+        if(i+1 < SIZE){
+            if(board[i+1][j-1]) return true;
+        }
+    }
+    if(i+1 < SIZE){
+        if(board[i+1][j]) return true;
+        if(j+1 < SIZE){
+            if(board[i+1][j+1]) return true;
+        }
+    }
+    if(j+1 < SIZE){
+        if(board[i][j+1]) return true;
+    }
+    return false;
+}
+
+node minmax(int depth, bool maxplayer){
+    if(depth <= 0){
+        if(player == BLACK)
+            return node(0, 0, evaluation(BLACK)-evaluation(WHITE));
+        else
+            return node(0, 0, evaluation(WHITE)-evaluation(BLACK));
+    }
+    node temp, value(7, 7, 0);
+    if(maxplayer){
+        value.v = std::numeric_limits<int>::min();
+        for(int i = 0; i < SIZE; i++){
+            for(int j = 0; j < SIZE; j++){
+                if(board[i][j] == EMPTY && check_empty(i, j)){
+                    board[i][j] = player;
+                    temp = minmax(depth-1, false);
+                    if(temp.v > value.v){
+                        value.v = temp.v;
+                        value.x = i;
+                        value.y = j;
+                    }
+                    board[i][j] = EMPTY;
+                }
+            }
+        }
+    }else{
+        value.v = std::numeric_limits<int>::max();
+        for(int i = 0; i < SIZE; i++){
+            for(int j = 0; j < SIZE; j++){
+                if(board[i][j] == EMPTY && check_empty(i, j)){
+                    if(player == BLACK){
+                        board[i][j] = WHITE;
+                    }else{
+                        board[i][j] = BLACK;
+                    }
+                    temp = minmax(depth-1, true);
+                    if(temp.v < value.v){
+                        value.v = temp.v;
+                    }
+                    board[i][j] = EMPTY;
+                }
+            }
+        }
+    }
+    return value;
+}
+
+void write_valid_spot(std::ofstream& fout) {
+    int x, y;
+    node temp;
+    temp = minmax(2, true);
+    x = temp.x;
+    y = temp.y;
     if(board[x][y] != EMPTY){ //second
         x++;
         y++;
