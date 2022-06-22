@@ -27,12 +27,6 @@ class node{
         y = 0;
         v = 0;
     }
-    // node& operator= (const node &other){
-    //     x = other.x;
-    //     y = other.y;
-    //     v = other.v;
-    //     return *this;
-    // }
 };
 
 int player;
@@ -111,6 +105,80 @@ std::vector<node> live4ld{
     node(3, -3, 1),
     node(4, -4, 0)
 };
+//dead4 200
+std::vector<node> dead4r{
+    node(0, -1, 2),
+    node(0, 0, 1),
+    node(0, 1, 1),
+    node(0, 2, 1),
+    node(0, 3, 1),
+    node(0, 4, 0),
+};
+std::vector<node> dead4r1{
+    node(0, -1, 0),
+    node(0, 0, 1),
+    node(0, 1, 1),
+    node(0, 2, 1),
+    node(0, 3, 1),
+    node(0, 4, 2),
+};
+std::vector<node> dead4c{
+    node(-1, 0, 2),
+    node(0, 0, 1),
+    node(1, 0, 1),
+    node(2, 0, 1),
+    node(3, 0, 1),
+    node(4, 0, 0)
+};
+std::vector<node> dead4c1{
+    node(-1, 0, 0),
+    node(0, 0, 1),
+    node(1, 0, 1),
+    node(2, 0, 1),
+    node(3, 0, 1),
+    node(4, 0, 2)
+};
+std::vector<node> dead4rd{
+    node(-1, -1, 2),
+    node(0, 0, 1),
+    node(1, 1, 1),
+    node(2, 2, 1),
+    node(3, 3, 1),
+    node(4, 4, 0)
+};
+std::vector<node> dead4rd1{
+    node(-1, -1, 0),
+    node(0, 0, 1),
+    node(1, 1, 1),
+    node(2, 2, 1),
+    node(3, 3, 1),
+    node(4, 4, 2)
+};
+std::vector<node> dead4ld{
+    node(-1, 1, 2),
+    node(0, 0, 1),
+    node(1, -1, 1),
+    node(2, -2, 1),
+    node(3, -3, 1),
+    node(4, -4, 0)
+};
+std::vector<node> dead4ld1{
+    node(-1, 1, 0),
+    node(0, 0, 1),
+    node(1, -1, 1),
+    node(2, -2, 1),
+    node(3, -3, 1),
+    node(4, -4, 2)
+};
+//jump4 120
+// std::vector<node> jump4{
+//     node(0, -1, 2),
+//     node(0, 0, 1),
+//     node(0, 1, 1),
+//     node(0, 2, 1),
+//     node(0, 3, 1),
+//     node(0, 4, 0),
+// };
 //live3 200
 std::vector<node> live3r{
     node(0, -2, 0),
@@ -285,6 +353,99 @@ std::vector<node> live321ld{
     node(3, -3, 1),
     node(4, -4, 0)
 };
+//dead3 15
+std::vector<node> dead3r{
+    node(0, -1, 2),
+    node(0, 0, 1),
+    node(0, 1, 1),
+    node(0, 2, 1),
+    node(0, 3, 0)
+};
+std::vector<node> dead3r1{
+    node(0, -1, 0),
+    node(0, 0, 1),
+    node(0, 1, 1),
+    node(0, 2, 1),
+    node(0, 3, 2)
+};
+std::vector<node> dead3r2{
+    node(0, -2, 2),
+    node(0, -1, 0),
+    node(0, 0, 1),
+    node(0, 1, 1),
+    node(0, 2, 1),
+    node(0, 3, 0),
+    node(0, 4, 2)
+};
+std::vector<node> dead3c{
+    node(-1, 0, 2),
+    node(0, 0, 1),
+    node(1, 0, 1),
+    node(2, 0, 1),
+    node(3, 0, 0)
+};
+std::vector<node> dead3c1{
+    node(-1, 0, 0),
+    node(0, 0, 1),
+    node(1, 0, 1),
+    node(2, 0, 1),
+    node(3, 0, 2)
+};
+std::vector<node> dead3c2{
+    node(-2, 0, 2),
+    node(-1, 0, 0),
+    node(0, 0, 1),
+    node(1, 0, 1),
+    node(2, 0, 1),
+    node(3, 0, 0),
+    node(4, 0, 2)
+};
+std::vector<node> dead3rd{
+    node(-1, -1, 2),
+    node(0, 0, 1),
+    node(1, 1, 1),
+    node(2, 2, 1),
+    node(3, 3, 0)
+};
+std::vector<node> dead3rd1{
+    node(-1, -1, 0),
+    node(0, 0, 1),
+    node(1, 1, 1),
+    node(2, 2, 1),
+    node(3, 3, 2)
+};
+std::vector<node> dead3rd2{
+    node(-2, -2, 2),
+    node(-1, -1, 0),
+    node(0, 0, 1),
+    node(1, 1, 1),
+    node(2, 2, 1),
+    node(3, 3, 0),
+    node(4, 4, 2)
+};
+std::vector<node> dead3ld{
+    node(-1, 1, 2),
+    node(0, 0, 1),
+    node(1, -1, 1),
+    node(2, -2, 1),
+    node(3, -3, 0)
+};
+std::vector<node> dead3ld1{
+    node(-1, 1, 0),
+    node(0, 0, 1),
+    node(1, -1, 1),
+    node(2, -2, 1),
+    node(3, -3, 2)
+};
+std::vector<node> dead3ld2{
+    node(-2, 2, 2),
+    node(-1, 1, 0),
+    node(0, 0, 1),
+    node(1, -1, 1),
+    node(2, -2, 1),
+    node(3, -3, 0),
+    node(4, -4, 2)
+};
 //live22 40
 std::vector<node> live22{
     node(-1, 0, 0),
@@ -456,22 +617,27 @@ std::vector<node> live2ld{
     node(2, -2, 0)
 };
 
+
 std::vector<std::vector<node>> all{
     live5r, live5c, live5rd, live5ld,
     live4r, live4c, live4rd, live4ld,
+    dead4r, dead4c, dead4rd, dead4ld, dead4r1, dead4c1, dead4rd1, dead4ld1,
     live3r, live3c, live3rd, live3ld, live3r1, live3c1, live3rd1, live3ld1, live3r2, live3c2, live3rd2, live3ld2,
     live22, live221, live222, live223, live224, live225, live226, live227, live228, live229, live2210, live2211, live2212, live2213, live2214, live2215,
     live312r, live312c, live312rd, live312ld, live321r, live321c, live321rd, live321ld,
-    live2r, live2c, live2rd, live2ld
+    live2r, live2c, live2rd, live2ld,
+    dead3r, dead3c, dead3rd, dead3ld, dead3r1, dead3c1, dead3rd1, dead3ld1, dead3r2, dead3c2, dead3rd2, dead3ld2
 };
 
 std::vector<int> all_value{
     9999999, 9999999, 9999999, 9999999,
     1000000, 1000000, 1000000, 1000000, 
+    200, 200, 200, 200, 200, 200, 200, 200,
     200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 200, 
     40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40, 40,
     30, 30, 30, 30, 30, 30, 30, 30, 
-    20, 20, 20, 20
+    20, 20, 20, 20,
+    15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15 
 };
 
 
@@ -571,7 +737,7 @@ bool check_empty(int i, int j){
     return false;
 }
 
-node minmax(int depth, bool maxplayer){
+node minmax(int depth, bool maxplayer, int a, int b){
     if(depth <= 0){
         if(player == BLACK)
             return node(0, 0, evaluation(BLACK)-evaluation(WHITE));
@@ -579,17 +745,24 @@ node minmax(int depth, bool maxplayer){
             return node(0, 0, evaluation(WHITE)-evaluation(BLACK));
     }
     node temp, value(7, 7, 0);
+    bool flag = true;
     if(maxplayer){
         value.v = std::numeric_limits<int>::min();
-        for(int i = 0; i < SIZE; i++){
-            for(int j = 0; j < SIZE; j++){
+        for(int i = 0; i < SIZE && flag; i++){
+            for(int j = 0; j < SIZE && flag; j++){
                 if(board[i][j] == EMPTY && check_empty(i, j)){
                     board[i][j] = player;
-                    temp = minmax(depth-1, false);
+                    temp = minmax(depth-1, false, a, b);
                     if(temp.v > value.v){
                         value.v = temp.v;
                         value.x = i;
                         value.y = j;
+                    }
+                    if(value.v > a){
+                        a = value.v;
+                    }
+                    if(a >= b){
+                        flag = false;
                     }
                     board[i][j] = EMPTY;
                 }
@@ -597,17 +770,23 @@ node minmax(int depth, bool maxplayer){
         }
     }else{
         value.v = std::numeric_limits<int>::max();
-        for(int i = 0; i < SIZE; i++){
-            for(int j = 0; j < SIZE; j++){
+        for(int i = 0; i < SIZE && flag; i++){
+            for(int j = 0; j < SIZE && flag; j++){
                 if(board[i][j] == EMPTY && check_empty(i, j)){
                     if(player == BLACK){
                         board[i][j] = WHITE;
                     }else{
                         board[i][j] = BLACK;
                     }
-                    temp = minmax(depth-1, true);
+                    temp = minmax(depth-1, true, a, b);
                     if(temp.v < value.v){
                         value.v = temp.v;
+                    }
+                    if(value.v < b){
+                        b = value.v;
+                    }
+                    if(b <= a){
+                        flag = false;
                     }
                     board[i][j] = EMPTY;
                 }
@@ -620,7 +799,9 @@ node minmax(int depth, bool maxplayer){
 void write_valid_spot(std::ofstream& fout) {
     int x, y;
     node temp;
-    temp = minmax(2, true);
+    int a = std::numeric_limits<int>::min();
+    int b = std::numeric_limits<int>::max();
+    temp = minmax(3, true, a, b);
     x = temp.x;
     y = temp.y;
     if(board[x][y] != EMPTY){ //second
